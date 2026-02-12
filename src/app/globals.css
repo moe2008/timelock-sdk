@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.mjs";
 
 :root {
   --background: #ffffff;
@@ -23,4 +24,82 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  scroll-behavior: smooth !important;
+}
+
+/* SCROLLBAR  */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #06b6d4 #0a0a0a;
+}
+
+*::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+*::-webkit-scrollbar-track {
+  background:
+    repeating-linear-gradient(45deg,
+      #0a0a0a 0px,
+      #0a0a0a 2px,
+      #1a1a1a 2px,
+      #1a1a1a 4px);
+  border-radius: 8px;
+  border: 2px solid #06b6d4;
+  opacity: 0.5;
+}
+
+*::-webkit-scrollbar-thumb {
+  background:
+    repeating-linear-gradient(135deg,
+      #06b6d4 0px,
+      #06b6d4 10px,
+      #22d3ee 10px,
+      #22d3ee 20px,
+      #06b6d4 20px,
+      #06b6d4 30px,
+      #0891b2 30px,
+      #0891b2 40px);
+  background-size: 200% 200%;
+  border-radius: 8px;
+  border: 2px solid #0a0a0a;
+  animation: stripe-move 2s linear infinite;
+}
+
+@keyframes stripe-move {
+  0% {
+    background-position: 0% 0%;
+  }
+
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background:
+    repeating-linear-gradient(135deg,
+      #22d3ee 0px,
+      #22d3ee 10px,
+      #38bdf8 10px,
+      #38bdf8 20px,
+      #22d3ee 20px,
+      #22d3ee 30px,
+      #06b6d4 30px,
+      #06b6d4 40px);
+  background-size: 200% 200%;
+  border-color: #06b6d4;
+  animation: stripe-move 0.8s linear infinite;
+}
+
+*::-webkit-scrollbar-thumb:active {
+  background: #38bdf8;
+  border-color: #22d3ee;
+  opacity: 1;
+}
+
+*::-webkit-scrollbar-corner {
+  background: #0a0a0a;
 }
