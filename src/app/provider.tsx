@@ -2,25 +2,15 @@
 
 import { WagmiProvider, createConfig, http } from "wagmi";
 import { injected } from "wagmi/connectors";
+import { sepolia } from "wagmi/chains";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactNode } from "react";
-
-// Hardhat local chain definition
-const hardhat = {
-    id: 31337,
-    name: "Hardhat",
-    nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
-    rpcUrls: {
-        default: { http: ["http://127.0.0.1:8545"] },
-        public: { http: ["http://127.0.0.1:8545"] },
-    },
-} as const;
+import type { ReactNode } from "react";
 
 const config = createConfig({
-    chains: [hardhat],
+    chains: [sepolia],
     connectors: [injected()],
     transports: {
-        [hardhat.id]: http("http://127.0.0.1:8545"),
+        [sepolia.id]: http(process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL!),
     },
     ssr: true,
 });
