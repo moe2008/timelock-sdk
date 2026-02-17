@@ -34,5 +34,14 @@
     "hardhat": "^3.1.8",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "overrides": {
+      "react": "19.2.3",
+      "react-dom": "19.2.3",
+      "wagmi": "2.19.5",
+      "viem": "^2.44.4",
+      "@tanstack/react-query": "^5.90.18"
+    }
   }
 }
