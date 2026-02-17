@@ -1,8 +1,8 @@
 "use client";
-import React, { JSX, useState, useEffect } from 'react';
+import React, { JSX, useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Navbar } from '../../components/landingpage/HomeSection';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 // Helper component to highlight search matches
 const HighlightText: React.FC<{ text: string; query: string }> = ({ text, query }) => {
@@ -28,7 +28,10 @@ const HighlightText: React.FC<{ text: string; query: string }> = ({ text, query 
 
 const DocsPage: React.FC = () => {
     const router = useRouter();
-    const searchParams = useSearchParams();
+    const searchParams = useMemo(() => {
+        if (typeof window === "undefined") return new URLSearchParams();
+        return new URLSearchParams(window.location.search);
+    }, []);
     const [activeSection, setActiveSection] = useState<string>('introduction');
     const [searchQuery, setSearchQuery] = useState<string>('');
 
