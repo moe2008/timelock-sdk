@@ -67,7 +67,7 @@ const ClosingSection: React.FC = () => {
     const { data: hash, sendTransaction } = useSendTransaction();
     const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
 
-
+    //
     useEffect(() => {
         setMounted(true);
     }, []);
